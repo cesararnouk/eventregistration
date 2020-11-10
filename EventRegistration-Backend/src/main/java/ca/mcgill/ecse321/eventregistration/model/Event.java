@@ -9,7 +9,7 @@ import java.sql.Time;
 public class Event{
 private String name;
    
-   public void setName(String value) {
+public void setName(String value) {
 this.name = value;
     }
 @Id
@@ -40,4 +40,4 @@ this.endTime = value;
 public Time getEndTime() {
 return this.endTime;
        }
-   }
+}
