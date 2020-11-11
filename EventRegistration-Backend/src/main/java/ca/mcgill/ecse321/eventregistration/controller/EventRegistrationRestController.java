@@ -37,9 +37,10 @@ public class EventRegistrationRestController {
     }
 
     @PostMapping(value = { "/events/{name}", "/events/{name}/" })
-    public EventDto createEvent(@PathVariable("name") String name, @RequestParam Date date)
+    public EventDto createEvent(@PathVariable("name") String name, @RequestParam Date date, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.TIME, pattern = "HH:mm") LocalTime startTime,
+                                @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.TIME, pattern = "HH:mm") LocalTime endTime)
             throws IllegalArgumentException {
-        Event event = service.createEvent(name, date);
+        Event event = service.createEvent(name, date, Time.valueOf(startTime), Time.valueOf(endTime));
         return convertToDto(event);
     }
 
