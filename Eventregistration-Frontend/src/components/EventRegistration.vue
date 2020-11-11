@@ -6,12 +6,12 @@
             <th>Name</th>
             <th>Events</th>
         </tr>
-        <tr v-for="person in persons" v-bind:key="'person-${i}'">
+        <tr v-for="(person,i) in persons" v-bind:key="`person-${i}`">
             <td>{{ person.name }}</td>
             <td>
               <ul>
-                <li v-for="event in person.events" 
-                    v-bind:key="'event-${i}'" 
+                <li v-for="(event,i) in person.events" 
+                    v-bind:key="`event-${i}`" 
                     style="list-style-type-disc;">
                   <span class="registration-event-name">{{event.name}}</span>
                 </li>
@@ -34,7 +34,7 @@
             <td></td>
         </tr>
     </table>
-    <span v-if="errorPerson" style="color:red">Error: {{errorPerson}} </span>s
+    <span v-if="errorPerson" style="color:red">Error: {{errorPerson}} </span>
   </div>
 </template>
 
