@@ -1,29 +1,49 @@
 <template>
     <div id="eventregistration">
-        <h2>People</h2>
-        <table>
+    <h2>Persons</h2>
+      <table id="persons_table">
         <tr>
-            <td>John</td>
-            <td>Event to attend</td>
+            <th>Name</th>
+            <th>Events</th>
+        </tr>
+        <tr v-for="person in persons" v-bind:key="'person-${i}'">
+            <td>{{ person.name }}</td>
+            <td>
+              <ul>
+                <li v-for="event in person.events" 
+                    v-bind:key="'event-${i}'" 
+                    style="list-style-type-disc;">
+                  <span class="registration-event-name">{{event.name}}</span>
+                </li>
+              </ul>
+            </td>
         </tr>
         <tr>
             <td>
-                <input type="text" placeholder="Person Name">
+                <input 
+                    id="create_person_person_name"
+                    type="text" 
+                    v-model="newPerson" 
+                    placeholder="Person Name"
+                    />
             </td>
             <td>
-                <button>Create</button>
+                <button id="create_person_button" @click="createPerson(newPerson)">Create Person</button>
             </td>
+            <td></td>
+            <td></td>
         </tr>
-        </table>
-        <p>
-        <span style="color:red">Error: Message text comes here</span>
-        </p>
-    </div>
+    </table>
+    <span v-if="errorPerson" style="color:red">Error: {{errorPerson}} </span>s
+  </div>
 </template>
 
-<script>
 
+
+<script src="./registration.js">
 </script>
+
+
 
 <style>
     #eventregistration {
